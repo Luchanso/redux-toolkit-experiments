@@ -10,8 +10,6 @@ const rootReducer = combineReducers({
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => {
-    // debugger;
-    // return [];
     return getDefaultMiddleware({
       immutableCheck: false,
       serializableCheck: false
