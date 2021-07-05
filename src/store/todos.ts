@@ -41,8 +41,8 @@ const actions = {
   addTodo: (data) => ({ type: "addTodo", payload: data })
 };
 
-export default {
-  reducer,
-  actions
-};
-// export default todos;
+// export default {
+//   reducer,
+//   actions
+// };
+export default todos;

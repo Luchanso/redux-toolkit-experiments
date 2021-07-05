@@ -20,6 +20,8 @@ const store = configureStore({
 
 // const store = createStore(rootReducer);
 
+console.log("test");
+
 export type AppDispatch = typeof store.dispatch;
 export type AppState = ReturnType<typeof rootReducer>;
 
