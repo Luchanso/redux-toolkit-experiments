@@ -7,8 +7,6 @@ import todoSlice from "../store/todos";
 const TodoList: React.FC = () => {
   const timer = useRef<number>();
 
-  console.log("rerender after call click: ", Date.now() - timer.current, "ms.");
-
   const dispatch: AppDispatch = useDispatch();
   const todos = useSelector((state: AppState) => state.todos);
   return (

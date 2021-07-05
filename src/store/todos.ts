@@ -7,9 +7,11 @@ export interface Todo {
   completed: boolean;
 }
 
+const initialState: Todo[] = []
+
 const todos = createSlice({
   name: "todos",
-  initialState: [] as Todo[],
+  initialState,
   reducers: {
     addTodo: (state, action: PayloadAction<string>) => {
       state.push({ id: uuid(), message: action.payload, completed: false });
@@ -19,30 +21,13 @@ const todos = createSlice({
       state.filter((todo) => todo.id !== action.payload),
     completeTodo: (state, action: PayloadAction<string>) => {
       const completedTodo = state.find((todo) => todo.id === action.payload);
-      completedTodo.completed = true;
+      if (completedTodo) {
+        completedTodo.completed = true;
+      }
       return state;
     },
     sort: (state) => state.sort((a, b) => a.message.localeCompare(b.message))
   }
 });
 
-const reducer = (state = [], action) => {
-  if (action.type === "addTodo") {
-    return [
-      ...state,
-      { id: uuid(), message: action.payload, completed: false }
-    ];
-  }
-
-  return state;
-};
-
-const actions = {
-  addTodo: (data) => ({ type: "addTodo", payload: data })
-};
-
-// export default {
-//   reducer,
-//   actions
-// };
 export default todos;

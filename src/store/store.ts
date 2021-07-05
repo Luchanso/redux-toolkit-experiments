@@ -1,5 +1,4 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { createStore } from "redux";
 import todos from "./todos";
 import dictionary from "./dictionary";
 
@@ -11,16 +10,14 @@ const rootReducer = combineReducers({
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => {
-    debugger;
+    // debugger;
+    // return [];
     return getDefaultMiddleware({
-      immutableCheck: false
+      immutableCheck: false,
+      serializableCheck: false
     });
   }
 });
-
-// const store = createStore(rootReducer);
-
-console.log("test");
 
 export type AppDispatch = typeof store.dispatch;
 export type AppState = ReturnType<typeof rootReducer>;
